@@ -1,13 +1,15 @@
-
 from __future__ import print_function, division
-import sys
-import numpy as np
+
 import re
 import string
-import emoji
-from tokenizer import RE_MENTION, RE_URL
-from global_variables import SPECIAL_TOKENS
+import sys
 from itertools import groupby
+
+import emoji
+import numpy as np
+
+from .global_variables import SPECIAL_TOKENS
+from .tokenizer import RE_MENTION, RE_URL
 
 AtMentionRegex = re.compile(RE_MENTION)
 urlRegex = re.compile(RE_URL)
@@ -31,8 +33,8 @@ VARIATION_SELECTORS = [u'\ufe00',
                        u'\ufe0f']
 
 # from https://stackoverflow.com/questions/92438/stripping-non-printable-characters-from-a-string-in-python
-ALL_CHARS = (unichr(i) for i in xrange(sys.maxunicode))
-CONTROL_CHARS = ''.join(map(unichr, range(0, 32) + range(127, 160)))
+ALL_CHARS = (chr(i) for i in range(sys.maxunicode))
+CONTROL_CHARS = ''.join(map(chr, range(0, 32) + range(127, 160)))
 CONTROL_CHAR_REGEX = re.compile('[%s]' % re.escape(CONTROL_CHARS))
 
 

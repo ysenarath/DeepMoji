@@ -2,13 +2,15 @@ from __future__ import print_function, division
 
 import glob
 import json
-import numpy as np
 import uuid
-from filter_utils import is_special_token
-from word_generator import WordGenerator
 from collections import defaultdict, OrderedDict
-from global_variables import SPECIAL_TOKENS, VOCAB_PATH
 from copy import deepcopy
+
+import numpy as np
+
+from .filter_utils import is_special_token
+from .global_variables import SPECIAL_TOKENS, VOCAB_PATH
+from .word_generator import WordGenerator
 
 
 class VocabBuilder():
@@ -149,7 +151,7 @@ class MasterVocab():
                     except KeyError:
                         continue
                     # if force_word_count < 5:
-                        # continue
+                    # continue
 
                 if word in self.master_vocab:
                     self.master_vocab[word] += normalized_count

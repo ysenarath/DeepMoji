@@ -1,10 +1,12 @@
 from __future__ import print_function
 
+import glob
 # allow us to import the codebase/keras directory
 import sys
-import glob
-import numpy as np
 from os.path import dirname, abspath
+
+import numpy as np
+
 sys.path.insert(0, dirname(dirname(abspath(__file__))))
 
 DATASETS = ['SE0714', 'Olympic', 'PsychExp', 'SS-Twitter', 'SS-Youtube',

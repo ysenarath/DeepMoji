@@ -8,21 +8,21 @@ from __future__ import division, print_function
 
 import re
 import unicodedata
+
 import numpy as np
 from text_unidecode import unidecode
-from tokenizer import RE_MENTION, tokenize
-from filter_utils import (
+
+from .filter_utils import (
     convert_linebreaks,
-    convert_nonbreaking_space,
     correct_length,
     extract_emojis,
     mostly_english,
     non_english_user,
     process_word,
     punct_word,
-    remove_control_chars,
     remove_variation_selectors,
     separate_emojis_and_text)
+from .tokenizer import RE_MENTION, tokenize
 
 # Only catch retweets in the beginning of the tweet as those are the
 # automatically added ones.
@@ -64,7 +64,7 @@ class WordGenerator():
             that is not allowed.
         """
 
-        if not isinstance(sentence, unicode):
+        if not isinstance(sentence, str):
             raise ValueError("All sentences should be Unicode-encoded!")
         sentence = sentence.strip().lower()
 
@@ -282,7 +282,7 @@ class TweetWordGenerator(WordGenerator):
             uniq_emojis = []
 
         if self.non_english_user_set is not None and \
-           non_english_user(data[1], self.non_english_user_set):
+                non_english_user(data[1], self.non_english_user_set):
             return False, []
         return True, uniq_emojis
 
@@ -290,8 +290,8 @@ class TweetWordGenerator(WordGenerator):
         fields = line.strip().split("\t")
         valid, emojis = self.validated_tweet(fields)
         text = fields[9].replace(u'\\n', u'') \
-                        .replace(u'\\r', u'') \
-                        .replace(u'&amp', u'&') if valid else ''
+            .replace(u'\\r', u'') \
+            .replace(u'&amp', u'&') if valid else ''
         return valid, text, {'emojis': emojis}
 
     def data_postprocess_filtering(self, words, iter_i):

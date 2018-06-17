@@ -8,8 +8,9 @@ Extend the given vocabulary using dataset-specific words.
 """
 
 from __future__ import print_function
-import example_helper
+
 import json
+
 from deepmoji.create_vocab import extend_vocab, VocabBuilder
 from deepmoji.word_generator import WordGenerator
 

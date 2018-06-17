@@ -1,11 +1,12 @@
 from __future__ import print_function
-import pickle
-import json
-import csv
-import sys
 
+import csv
+import json
+import pickle
+import sys
 # Allow us to import the deepmoji directory
 from os.path import dirname, abspath
+
 sys.path.insert(0, dirname(dirname(abspath(__file__))))
 
 from deepmoji.sentence_tokenizer import SentenceTokenizer, coverage

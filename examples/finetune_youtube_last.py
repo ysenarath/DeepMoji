@@ -11,13 +11,14 @@ The 'last' method does the following:
 """
 
 from __future__ import print_function
-import example_helper
+
 import json
-from deepmoji.model_def import deepmoji_transfer
-from deepmoji.global_variables import PRETRAINED_PATH
+
 from deepmoji.finetuning import (
     load_benchmark,
     finetune)
+from deepmoji.global_variables import PRETRAINED_PATH
+from deepmoji.model_def import deepmoji_transfer
 
 DATASET_PATH = '../data/SS-Youtube/raw.pickle'
 nb_classes = 2

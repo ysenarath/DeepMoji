@@ -2,8 +2,10 @@
 """ Tokenization tests.
 """
 import sys
-from nose.tools import nottest
 from os.path import dirname, abspath
+
+from nose.tools import nottest
+
 sys.path.append(dirname(dirname(abspath(__file__))))
 from deepmoji.tokenizer import tokenize
 
@@ -161,5 +163,5 @@ def test_base(tests):
     for (test, expected) in tests:
         actual = tokenize(test)
         assert actual == expected, \
-            "Tokenization of \'{}\' failed, expected: {}, actual: {}"\
-            .format(test, expected, actual)
+            "Tokenization of \'{}\' failed, expected: {}, actual: {}" \
+                .format(test, expected, actual)

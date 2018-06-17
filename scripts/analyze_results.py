@@ -1,7 +1,8 @@
 from __future__ import print_function
 
-import sys
 import glob
+import sys
+
 import numpy as np
 
 DATASET = 'SS-Twitter'  # 'SE1604' excluded due to Twitter's ToS

@@ -5,12 +5,14 @@ numbers, according to the given vocabulary.
 from __future__ import print_function, division
 
 import numbers
-import numpy as np
-from create_vocab import extend_vocab, VocabBuilder
-from word_generator import WordGenerator
-from global_variables import SPECIAL_TOKENS
-from sklearn.model_selection import train_test_split
 from copy import deepcopy
+
+import numpy as np
+from sklearn.model_selection import train_test_split
+
+from .create_vocab import extend_vocab, VocabBuilder
+from .global_variables import SPECIAL_TOKENS
+from .word_generator import WordGenerator
 
 
 class SentenceTokenizer():
@@ -98,8 +100,8 @@ class SentenceTokenizer():
             s_tokens = self.find_tokens(s_words)
 
             if (self.ignore_sentences_with_only_custom and
-                np.all([True if t < len(SPECIAL_TOKENS)
-                        else False for t in s_tokens])):
+                    np.all([True if t < len(SPECIAL_TOKENS)
+                            else False for t in s_tokens])):
                 n_ignored_unknowns += 1
                 continue
             if len(s_tokens) > self.fixed_length:
@@ -164,7 +166,7 @@ class SentenceTokenizer():
             # Helper function to verify provided indices are numbers in range
             def verify_indices(inds):
                 return list(filter(lambda i: isinstance(i, numbers.Number) and
-                                   i < len(sentences), inds))
+                                             i < len(sentences), inds))
 
             ind_train = verify_indices(split_parameter[0])
             ind_val = verify_indices(split_parameter[1])

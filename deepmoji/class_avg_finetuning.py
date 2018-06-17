@@ -3,22 +3,21 @@
 """
 from __future__ import print_function
 
-import sys
 import uuid
-import numpy as np
-from os.path import dirname
 from time import sleep
+
+import numpy as np
 from keras.optimizers import Adam
 
-from global_variables import (
-    FINETUNING_METHODS,
-    WEIGHTS_DIR)
-from finetuning import (
+from .finetuning import (
     freeze_layers,
     sampling_generator,
     finetuning_callbacks,
     train_by_chain_thaw,
     find_f1_threshold)
+from .global_variables import (
+    FINETUNING_METHODS,
+    WEIGHTS_DIR)
 
 
 def relabel(y, current_label_nr, nb_classes):
@@ -84,10 +83,10 @@ def class_avg_finetune(model, texts, labels, nb_classes, batch_size,
     (X_test, y_test) = (texts[2], labels[2])
 
     checkpoint_path = '{}/deepmoji-checkpoint-{}.hdf5' \
-                      .format(WEIGHTS_DIR, str(uuid.uuid4()))
+        .format(WEIGHTS_DIR, str(uuid.uuid4()))
 
     f1_init_path = '{}/deepmoji-f1-init-{}.hdf5' \
-                   .format(WEIGHTS_DIR, str(uuid.uuid4()))
+        .format(WEIGHTS_DIR, str(uuid.uuid4()))
 
     # Check dimension of labels
     if error_checking:

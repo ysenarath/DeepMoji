@@ -1,15 +1,14 @@
 # -*- coding: utf-8 -*-
 
-""" Use DeepMoji to encode texts into emotional feature vectors.
+""" Use deepmoji to encode texts into emotional feature vectors.
 """
 from __future__ import print_function, division
-import example_helper
+
 import json
-import csv
-import numpy as np
-from deepmoji.sentence_tokenizer import SentenceTokenizer
-from deepmoji.model_def import deepmoji_feature_encoding
+
 from deepmoji.global_variables import PRETRAINED_PATH, VOCAB_PATH
+from deepmoji.model_def import deepmoji_feature_encoding
+from deepmoji.sentence_tokenizer import SentenceTokenizer
 
 TEST_SENTENCES = [u'I love mom\'s cooking',
                   u'I love how you never reply back..',

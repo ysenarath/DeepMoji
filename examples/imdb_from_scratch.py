@@ -4,10 +4,11 @@
    be used with the pretrained model for optimal performance.
 """
 from __future__ import print_function
-import example_helper
+
 import numpy as np
-from keras.preprocessing import sequence
 from keras.datasets import imdb
+from keras.preprocessing import sequence
+
 from deepmoji.model_def import deepmoji_architecture
 
 # Seed for reproducibility

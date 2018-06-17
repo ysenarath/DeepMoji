@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-""" Use DeepMoji to score texts for emoji distribution.
+""" Use deepmoji to score texts for emoji distribution.
 
 The resulting emoji ids (0-63) correspond to the mapping
-in emoji_overview.png file at the root of the DeepMoji repo.
+in emoji_overview.png file at the root of the deepmoji repo.
 
 Writes the result to a csv file.
 """
@@ -50,7 +50,7 @@ prob = model.predict(tokenized)
 
 # Find top emojis for each sentence. Emoji ids (0-63)
 # correspond to the mapping in emoji_overview.png
-# at the root of the DeepMoji repo.
+# at the root of the deepmoji repo.
 print('Writing results to {}'.format(OUTPUT_PATH))
 scores = []
 for i, t in enumerate(TEST_SENTENCES):

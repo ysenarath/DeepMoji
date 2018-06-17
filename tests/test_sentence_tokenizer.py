@@ -1,5 +1,5 @@
 from __future__ import print_function
-import test_helper
+
 import json
 
 from deepmoji.sentence_tokenizer import SentenceTokenizer

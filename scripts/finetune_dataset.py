@@ -1,9 +1,10 @@
 """ Finetuning example.
 """
 from __future__ import print_function
+
 import sys
-import numpy as np
 from os.path import abspath, dirname
+
 sys.path.insert(0, dirname(dirname(abspath(__file__))))
 
 import json
@@ -99,12 +100,12 @@ for rerun_iter in range(5):
         if use_f1_score:
             print('Overall F1 score (dset = {}): {}'.format(dset, result))
             with open('{}/{}_{}_{}_results.txt'.
-                      format(RESULTS_DIR, dset, FINETUNE_METHOD, rerun_iter),
+                              format(RESULTS_DIR, dset, FINETUNE_METHOD, rerun_iter),
                       "w") as f:
                 f.write("F1: {}\n".format(result))
         else:
             print('Test accuracy (dset = {}): {}'.format(dset, result))
             with open('{}/{}_{}_{}_results.txt'.
-                      format(RESULTS_DIR, dset, FINETUNE_METHOD, rerun_iter),
+                              format(RESULTS_DIR, dset, FINETUNE_METHOD, rerun_iter),
                       "w") as f:
                 f.write("Acc: {}\n".format(result))

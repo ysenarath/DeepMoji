@@ -3,6 +3,7 @@ from __future__ import absolute_import, division
 
 import sys
 from os.path import dirname
+
 sys.path.append(dirname(dirname(__file__)))
 from keras import initializers
 from keras.engine import InputSpec, Layer
@@ -19,7 +20,7 @@ class AttentionWeightedAverage(Layer):
         self.init = initializers.get('uniform')
         self.supports_masking = True
         self.return_attention = return_attention
-        super(AttentionWeightedAverage, self).__init__(** kwargs)
+        super(AttentionWeightedAverage, self).__init__(**kwargs)
 
     def build(self, input_shape):
         self.input_spec = [InputSpec(ndim=3)]

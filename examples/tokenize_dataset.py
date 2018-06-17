@@ -5,8 +5,9 @@ of sentences.
 """
 
 from __future__ import print_function
-import example_helper
+
 import json
+
 from deepmoji.sentence_tokenizer import SentenceTokenizer
 
 with open('../model/vocabulary.json', 'r') as f:

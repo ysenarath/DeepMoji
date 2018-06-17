@@ -3,20 +3,22 @@
 
 from __future__ import print_function, division
 
-from keras.models import Model, Sequential
-from keras.layers.merge import concatenate
-from keras.layers import Input, Bidirectional, Embedding, Dense, Dropout, SpatialDropout1D, LSTM, Activation
-from keras.regularizers import L1L2
-from attlayer import AttentionWeightedAverage
-from global_variables import NB_TOKENS, NB_EMOJI_CLASSES
-import numpy as np
 from copy import deepcopy
 from os.path import exists
+
 import h5py
+import numpy as np
+from keras.layers import Input, Bidirectional, Embedding, Dense, Dropout, SpatialDropout1D, LSTM, Activation
+from keras.layers.merge import concatenate
+from keras.models import Model
+from keras.regularizers import L1L2
+
+from .attlayer import AttentionWeightedAverage
+from .global_variables import NB_TOKENS, NB_EMOJI_CLASSES
 
 
 def deepmoji_feature_encoding(maxlen, weight_path, return_attention=False):
-    """ Loads the pretrained DeepMoji model for extracting features
+    """ Loads the pretrained deepmoji model for extracting features
         from the penultimate feature layer. In this way, it transforms
         the text into its emotional encoding.
 
@@ -38,7 +40,7 @@ def deepmoji_feature_encoding(maxlen, weight_path, return_attention=False):
 
 
 def deepmoji_emojis(maxlen, weight_path, return_attention=False):
-    """ Loads the pretrained DeepMoji model for extracting features
+    """ Loads the pretrained deepmoji model for extracting features
         from the penultimate feature layer. In this way, it transforms
         the text into its emotional encoding.
 
@@ -62,7 +64,7 @@ def deepmoji_emojis(maxlen, weight_path, return_attention=False):
 def deepmoji_transfer(nb_classes, maxlen, weight_path=None, extend_embedding=0,
                       embed_dropout_rate=0.25, final_dropout_rate=0.5,
                       embed_l2=1E-6):
-    """ Loads the pretrained DeepMoji model for finetuning/transfer learning.
+    """ Loads the pretrained deepmoji model for finetuning/transfer learning.
         Does not load weights for the softmax layer.
 
         Note that if you are planning to use class average F1 for evaluation,
@@ -100,9 +102,10 @@ def deepmoji_transfer(nb_classes, maxlen, weight_path=None, extend_embedding=0,
     return model
 
 
-def deepmoji_architecture(nb_classes, nb_tokens, maxlen, feature_output=False, embed_dropout_rate=0, final_dropout_rate=0, embed_l2=1E-6, return_attention=False):
+def deepmoji_architecture(nb_classes, nb_tokens, maxlen, feature_output=False, embed_dropout_rate=0,
+                          final_dropout_rate=0, embed_l2=1E-6, return_attention=False):
     """
-    Returns the DeepMoji architecture uninitialized and
+    Returns the deepmoji architecture uninitialized and
     without using the pretrained model weights.
 
     # Arguments:
@@ -169,7 +172,7 @@ def deepmoji_architecture(nb_classes, nb_tokens, maxlen, feature_output=False, e
         # add the attention weights to the outputs if required
         outputs.append(weights)
 
-    return Model(inputs=[model_input], outputs=outputs, name="DeepMoji")
+    return Model(inputs=[model_input], outputs=outputs, name="deepmoji")
 
 
 def load_specific_weights(model, weight_path, exclude_names=[], extend_embedding=0, verbose=True):

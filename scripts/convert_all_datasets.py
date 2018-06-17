@@ -4,13 +4,15 @@ import json
 import math
 import pickle
 import sys
-import numpy as np
 from os.path import abspath, dirname
+
+import numpy as np
+
 sys.path.insert(0, dirname(dirname(abspath(__file__))))
 
 from deepmoji.word_generator import WordGenerator
 from deepmoji.create_vocab import VocabBuilder
-from deepmoji.sentence_tokenizer import SentenceTokenizer, extend_vocab, coverage
+from deepmoji.sentence_tokenizer import SentenceTokenizer, coverage
 from deepmoji.tokenizer import tokenize
 
 DATASETS = [

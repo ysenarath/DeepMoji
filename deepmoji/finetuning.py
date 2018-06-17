@@ -2,29 +2,24 @@
 """
 from __future__ import print_function
 
-import sys
+import math
+import pickle
 import uuid
 from time import sleep
 
-import h5py
-import math
-import pickle
 import numpy as np
-
+from keras.callbacks import ModelCheckpoint, EarlyStopping
 from keras.layers.wrappers import Bidirectional, TimeDistributed
-from sklearn.metrics import f1_score
-from keras.callbacks import ModelCheckpoint, EarlyStopping, CSVLogger
 from keras.optimizers import Adam
 from keras.utils.np_utils import to_categorical
-from keras.models import model_from_json
+from sklearn.metrics import f1_score
 
-from global_variables import (
+from .global_variables import (
     FINETUNING_METHODS,
     FINETUNING_METRICS,
     WEIGHTS_DIR)
-from tokenizer import tokenize
-from sentence_tokenizer import SentenceTokenizer
-from attlayer import AttentionWeightedAverage
+from .sentence_tokenizer import SentenceTokenizer
+from .tokenizer import tokenize
 
 
 def load_benchmark(path, vocab, extend_with=0):
@@ -96,6 +91,7 @@ def calculate_batchsize_maxlen(texts):
         Batch size,
         max length
     """
+
     def roundup(x):
         return int(math.ceil(x / 10.0)) * 10
 
@@ -277,8 +273,8 @@ def sampling_generator(X_in, y_in, batch_size, epoch_size=25000,
             X, y = X[p], y[p]
 
             label_dist = np.mean(y)
-            assert(label_dist > 0.45)
-            assert(label_dist < 0.55)
+            assert (label_dist > 0.45)
+            assert (label_dist < 0.55)
 
         # Hand-off data using batch_size
         for i in range(int(epoch_size / batch_size)):
@@ -327,7 +323,7 @@ def finetune(model, texts, labels, nb_classes, batch_size, method,
     (X_test, y_test) = (texts[2], labels[2])
 
     checkpoint_path = '{}/deepmoji-checkpoint-{}.hdf5' \
-                      .format(WEIGHTS_DIR, str(uuid.uuid4()))
+        .format(WEIGHTS_DIR, str(uuid.uuid4()))
 
     # Check dimension of labels
     if error_checking:
