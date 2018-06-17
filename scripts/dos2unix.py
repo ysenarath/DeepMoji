@@ -3,8 +3,8 @@
 convert dos linefeeds (crlf) to unix (lf)
 usage: dos2unix.py
 """
-original = "../data/Olympic/raw.pickle"
-destination = "../data/Olympic/raw.win.pickle"
+original = "../data/SS-Youtube/raw.pickle"
+destination = "../data/SS-Youtube/raw.win.pickle"
 
 content = ''
 outsize = 0

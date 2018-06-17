@@ -20,7 +20,7 @@ from deepmoji.finetuning import (
 from deepmoji.global_variables import PRETRAINED_PATH
 from deepmoji.model_def import deepmoji_transfer
 
-DATASET_PATH = '../data/SS-Youtube/raw.pickle'
+DATASET_PATH = '../data/SS-Youtube/raw.win.pickle'
 nb_classes = 2
 
 with open('../model/vocabulary.json', 'r') as f:
