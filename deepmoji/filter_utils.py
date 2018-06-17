@@ -3,7 +3,7 @@ from __future__ import print_function, division
 import re
 import string
 import sys
-from itertools import groupby
+from itertools import groupby, chain
 
 import emoji
 import numpy as np
@@ -34,7 +34,7 @@ VARIATION_SELECTORS = [u'\ufe00',
 
 # from https://stackoverflow.com/questions/92438/stripping-non-printable-characters-from-a-string-in-python
 ALL_CHARS = (chr(i) for i in range(sys.maxunicode))
-CONTROL_CHARS = ''.join(map(chr, range(0, 32) + range(127, 160)))
+CONTROL_CHARS = ''.join(map(chr, chain(range(0, 32), range(127, 160))))
 CONTROL_CHAR_REGEX = re.compile('[%s]' % re.escape(CONTROL_CHARS))
 
 
@@ -142,7 +142,10 @@ def shorten_word(word):
 
     # only shorten ASCII words
     try:
-        word.decode('ascii')
+        if hasattr(word, 'decode'):
+            word.decode('ascii')
+        else:
+            word.encode().decode('ascii')
     except (UnicodeDecodeError, UnicodeEncodeError) as e:
         return word
 
