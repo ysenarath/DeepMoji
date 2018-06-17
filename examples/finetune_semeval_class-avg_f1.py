@@ -1,11 +1,12 @@
-"""Finetuning example.
+"""
+Finetuning example.
 
 Trains the DeepMoji model on the SemEval emotion dataset, using the 'last'
 finetuning method and the class average F1 metric.
 
 The 'last' method does the following:
-0) Load all weights except for the softmax layer. Do not add tokens to the
-   vocabulary and do not extend the embedding layer.
+0) Load all weights except for the softmax layer.
+    Do not add tokens to the vocabulary and do not extend the embedding layer.
 1) Freeze all layers except for the softmax layer.
 2) Train.
 

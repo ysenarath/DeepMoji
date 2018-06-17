@@ -1,4 +1,4 @@
-'''
+"""
 Split a given dataset into three different datasets: training, validation and
 testing.
 
@@ -12,7 +12,7 @@ each sentence.
 
 An additional parameter can be set 'extend_with', which will extend the given
 vocabulary with up to 'extend_with' tokens, taken from the training dataset.
-'''
+"""
 from __future__ import print_function
 
 import json
