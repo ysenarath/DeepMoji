@@ -2,7 +2,7 @@
 
 ## Support for Python 3.6
 
-Did some changes to sources code to support `python 3.6` `verification needed`
+Did some changes to sources code to support `python 3.6` `[verification needed]`
 Please use commit log to see the changes performed by me (`Yasas`).
 
 ## Original Documentation
