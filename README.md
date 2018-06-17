@@ -1,5 +1,12 @@
 # DeepMoji
 
+## Support for Python 3.6
+
+Did some changes to sources code to support `python 3.6` `verification needed`
+Please use commit log to see the changes performed by me (`Yasas`).
+
+## Original Documentation
+
 [![DeepMoji Youtube](https://img.youtube.com/vi/u_JwYxtjzUs/0.jpg)](https://www.youtube.com/watch?v=u_JwYxtjzUs)  
 *(click image for video demonstration)*
   
@@ -19,11 +26,11 @@ To start out with, have a look inside the [examples/](examples) directory. See [
 
 Please consider citing our [paper](https://arxiv.org/abs/1708.00524) if you use our model or code (see below for citation).
 
-## Frameworks
+### Frameworks
 
 This code is based on Keras, which requires either Theano or Tensorflow as the backend. If you would rather use pyTorch there's an implementation available [here](https://github.com/huggingface/torchMoji), which has kindly been provided by Thomas Wolf.
 
-## Installation
+### Installation
 
 We assume that you're using [Python 2.7](https://www.python.org/downloads/) with [pip](https://pip.pypa.io/en/stable/installing/) installed. As a backend you need to install either [Theano (version 0.9+)](http://deeplearning.net/software/theano/install.html) or  [Tensorflow (version 1.3+)](https://www.tensorflow.org/install/). Once that's done you need to run the following inside the root directory to install the remaining dependencies:
   
@@ -45,7 +52,7 @@ Run the included script, which downloads the pretrained DeepMoji weights (~85MB)
 python scripts/download_weights.py
 ```
 
-## Testing
+### Testing
 To run the tests, install [nose](http://nose.readthedocs.io/en/latest/). After installing, navigate to the [tests/](tests) directory and run:
 
 ```bash
@@ -58,22 +65,22 @@ By default, this will also run finetuning tests. These tests train the model for
 nosetests -v -a '!slow'
 ```
 
-## Disclaimer 
+### Disclaimer 
 This code has been tested to work with Python 2.7 on an Ubuntu 16.04 machine. It has not been optimized for efficiency, but should be fast enough for most purposes. We do not give any guarantees that there are no bugs - use the code on your own responsibility!
 
-## Contributions
+### Contributions
 We welcome pull requests if you feel like something could be improved. You can also greatly help us by telling us how you felt when writing your most recent tweets. Just click [here](http://deepmoji.mit.edu/contribute/) to contribute.
 
-## License
+### License
 This code and the pretrained model is licensed under the MIT license. 
 
-## Benchmark datasets
+### Benchmark datasets
 The benchmark datasets are uploaded to this repository for convenience purposes only. They were not released by us and we do not claim any rights on them. Use the datasets at your responsibility and make sure you fulfill the licenses that they were released with. If you use any of the benchmark datasets please consider citing the original authors.
 
-## Twitter dataset
+### Twitter dataset
 We sadly cannot release our large Twitter dataset of tweets with emojis due to licensing restrictions.
 
-## Citation
+### Citation
 ```
 @inproceedings{felbo2017,
   title={Using millions of emoji occurrences to learn any-domain representations for detecting sentiment, emotion and sarcasm},
