@@ -35,7 +35,7 @@ for p in DATASET_PATHS:
 
     # Decode data
     try:
-        s['texts'] = [unicode(x) for x in s['texts']]
+        s['texts'] = [str(x) for x in s['texts']]
     except UnicodeDecodeError:
         s['texts'] = [x.decode('utf-8') for x in s['texts']]
 

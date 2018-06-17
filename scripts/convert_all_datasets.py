@@ -27,7 +27,7 @@ DATASETS = [
 ]
 
 DIR = '../data'
-FILENAME_RAW = 'raw.pickle'
+FILENAME_RAW = 'raw.win.pickle'
 FILENAME_OWN = 'own_vocab.pickle'
 FILENAME_OUR = 'twitter_vocab.pickle'
 FILENAME_COMBINED = 'combined_vocab.pickle'
@@ -77,12 +77,13 @@ for dset in DATASETS:
     PATH_OUR = '{}/{}/{}'.format(DIR, dset, FILENAME_OUR)
     PATH_COMBINED = '{}/{}/{}'.format(DIR, dset, FILENAME_COMBINED)
 
-    with open(PATH_RAW) as dataset:
+    print(PATH_RAW)
+    with open(PATH_RAW, 'rb') as dataset:
         data = pickle.load(dataset)
 
     # Decode data
     try:
-        texts = [unicode(x) for x in data['texts']]
+        texts = [str(x) for x in data['texts']]
     except UnicodeDecodeError:
         texts = [x.decode('utf-8') for x in data['texts']]
 
